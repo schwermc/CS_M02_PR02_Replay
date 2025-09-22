@@ -20,11 +20,17 @@ public class GameManager : MonoBehaviour
         {
             gameEnded = true;
             Debug.Log("Game Over");
-            Invoke("Restart", restartDelay);
+            Invoke("Replay", restartDelay);
         }
     }
 
-    void Restart()
+    public void Replay()
+    {
+        FindAnyObjectByType<PlayerMovement>().ResetPosition();
+        FindAnyObjectByType<InputHandler>().StartReplay();
+    }
+
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

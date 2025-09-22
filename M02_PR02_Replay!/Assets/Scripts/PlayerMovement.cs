@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float sidewaysForce = 500f;
 
     private GameManager gameManager;
+    private bool right = false;
+    private bool left = false;
 
     void Start()
     {
@@ -33,5 +35,20 @@ public class PlayerMovement : MonoBehaviour
         {
             gameManager.EndGame();
         }
-    } 
+    }
+
+    public void Right()
+    {
+        right = true;
+    }
+
+    public void Left()
+    {
+        left = true;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = new Vector3(0f, 1f, 0f);
+    }
 }
