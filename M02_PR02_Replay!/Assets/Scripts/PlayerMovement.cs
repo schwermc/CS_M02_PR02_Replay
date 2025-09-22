@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public float sidewaysForce = 500f;
 
     private GameManager gameManager;
-    private bool right = false;
-    private bool left = false;
 
     void Start()
     {
@@ -23,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("d"))
         {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange); // ForceMode.VelocityChange makes the change 'instant'
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            // ForceMode.VelocityChange makes the change 'instant'
         }
 
         if (Input.GetKey("a"))
@@ -39,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Right()
     {
-        right = true;
+        rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
     }
 
     public void Left()
     {
-        left = true;
+        rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
     }
 
     public void ResetPosition()
