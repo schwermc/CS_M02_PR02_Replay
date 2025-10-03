@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,11 +28,18 @@ public class GameManager : MonoBehaviour
     public void Replay()
     {
         FindAnyObjectByType<PlayerMovement>().ResetPosition();
+        StartCoroutine(Wait());
         FindAnyObjectByType<InputHandler>().StartReplay();
+        StartCoroutine(Wait());
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
     }
 }

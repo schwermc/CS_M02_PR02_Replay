@@ -31,7 +31,10 @@ public class InputHandler : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 _invoker.ExecuteCommand(_buttonD);
         }
-        playerMovement.rb.AddForce(0, 0, playerMovement.forwardForce * Time.deltaTime);
+        else
+        {
+            playerMovement.rb.AddForce(0, 0, playerMovement.forwardForce * Time.deltaTime);
+        }
     }
 
     public void StartReplay()
