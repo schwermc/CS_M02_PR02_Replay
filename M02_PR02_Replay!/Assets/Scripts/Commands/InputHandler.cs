@@ -21,20 +21,17 @@ public class InputHandler : MonoBehaviour
         _invoker.Record();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!_isReplaying && _isRecording)
         {
-            if (Input.GetKeyUp(KeyCode.A))
+            if (Input.GetKey(KeyCode.A))
                 _invoker.ExecuteCommand(_buttonA);
 
-            if (Input.GetKeyUp(KeyCode.D))
+            if (Input.GetKey(KeyCode.D))
                 _invoker.ExecuteCommand(_buttonD);
         }
-        else
-        {
-            playerMovement.rb.AddForce(0, 0, playerMovement.forwardForce * Time.deltaTime);
-        }
+        playerMovement.rb.AddForce(0, 0, playerMovement.forwardForce * Time.deltaTime);
     }
 
     public void StartReplay()
